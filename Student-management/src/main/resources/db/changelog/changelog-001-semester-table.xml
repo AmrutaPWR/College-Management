@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="amruta">
+        <createTable tableName="semester">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="sem" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="month" type="VARCHAR(50)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="amruta">
+        <insert tableName="semester">
+            <column name="sem" value="1st"/>
+            <column name="month" value="jan-june"/>
+        </insert>
+        <insert tableName="semester">
+            <column name="sem" value="2nd"/>
+            <column name="month" value="july-dec"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>

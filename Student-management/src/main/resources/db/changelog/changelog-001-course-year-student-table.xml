@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="Amruta">
+        <createTable tableName="course_year_student">
+            <column name="course_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="year_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="student_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey
+                tableName="course_year_student"
+                columnNames="student_id,course_id, year_id"
+                constraintName="pk_course_year_student"/>
+    <addForeignKeyConstraint
+            baseTableName="course_year_student"
+            baseColumnNames="course_id"
+            referencedTableName="course"
+            referencedColumnNames="id"
+            constraintName="fk_course_year_student_course"/>
+        <addForeignKeyConstraint
+                baseTableName="course_year_student"
+                baseColumnNames="student_id"
+                referencedTableName="student"
+                referencedColumnNames="id"
+                constraintName="fk_course_year_student_student"/>
+        <addForeignKeyConstraint
+                baseTableName="course_year_student"
+                baseColumnNames="year_id"
+                referencedTableName="year"
+                referencedColumnNames="id"
+                constraintName="fk_course_year_student_year"/>
+    </changeSet>
+
+    <changeSet id="2" author="amruta">
+        <insert tableName="course_year_student">
+            <column name="course_id" value="1"/>
+            <column name="year_id" value="1"/>
+            <column name="student_id" value="2"/>
+        </insert>
+
+        <insert tableName="course_year_student">
+            <column name="course_id" value="2"/>
+            <column name="year_id" value="1"/>
+            <column name="student_id" value="2"/>
+        </insert>
+
+        <insert tableName="course_year_student">
+            <column name="course_id" value="1"/>
+            <column name="year_id" value="1"/>
+            <column name="student_id" value="1"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
